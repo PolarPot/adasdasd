@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio — GDSC-UTP Workshop</title>
+
+  <!-- TODO (1): Link your stylesheet here.
+       Replace the blank href below with the correct filename.
+       <link rel="stylesheet" href="__________.css" />
+  -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       HEADER & NAVIGATION
+  ════════════════════════════════════════════════ -->
+  <header>
+    <nav class="navbar">
+
+      <!-- Your name / logo in the nav bar -->
+      <a href="#hero" class="nav-logo">MyPortfolio</a>
+
+      <ul class="nav-links">
+        <!--
+          TODO (2): Add the correct href anchor links to each <a> tag below.
+          Example: href="#about" will scroll to the section with id="about"
+        -->
+        <li><a href="#hero">Home</a></li>
+        <li><a href="________">About</a></li>
+        <li><a href="________">Skills</a></li>
+        <li><a href="________">Projects</a></li>
+        <li><a href="________">Contact</a></li>
+      </ul>
+
+      <!-- Dark Mode Toggle Button -->
+      <button id="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+
+    </nav>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- ─── SECTION 1: HERO ─────────────────────── -->
+    <section id="hero">
+      <!-- SVG-based neural pathway background (reliable, theme-aware) -->
+      <svg class="neural-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <g class="lane lane1"><path d="M0,200 C200,100 400,300 600,200 C800,100 1000,300 1200,200" fill="none"/></g>
+        <g class="lane lane2"><path d="M0,320 C180,220 420,420 600,320 C780,220 1020,420 1200,320" fill="none"/></g>
+        <g class="lane lane3"><path d="M0,440 C220,540 380,240 600,440 C820,640 980,340 1200,440" fill="none"/></g>
+        <g class="lane lane4"><path d="M0,560 C160,460 360,660 600,560 C840,460 1040,660 1200,560" fill="none"/></g>
+      </svg>
+      <div class="hero-content">
+
+        <!--
+          TODO (3): Replace '[Your Name]' with your actual name.
+        -->
+        <h1>Hi, I'm <span class="highlight">Nizamuddin</span> 🤣</h1>
+
+        <p class="hero-subtitle">Aspiring Data Analyst · UTP IS Student · GDSC Member </p>
+
+        <!-- Call-to-action button -->
+        <a href="#projects" class="btn btn-primary">View My Work 🚀</a>
+        <a href="#contact"  class="btn btn-secondary">Get In Touch</a>
+
+      </div>
+    </section>
+
+
+    <!-- ─── SECTION 2: ABOUT ─────────────────────── -->
+    <section id="about">
+      <div class="container">
+
+        <h2>About Me</h2>
+
+        <div class="about-wrapper">
+
+          <!--
+            TODO (4): Replace this placeholder with YOUR profile photo.
+
+            Option A — Local file (recommended for workshop):
+              1. Copy your photo into the "images/" folder in this project
+              2. Change src below to:  src="images/your-photo.jpg"
+
+            Option B — Online URL:
+              1. Right-click any photo online → "Copy image address"
+              2. Paste it as the src value
+
+            Also update the alt attribute with your own name!
+          -->
+          <img
+            class="profile-pic"
+            src="images/rock-sus.gif"
+            alt="Nizam"
+          />
+
+          <div class="about-text">
+            <p>
+              Hello! I'm a passionate student at Universiti Teknologi PETRONAS (UTP),
+              currently studying <strong>Bachelors in Information System (Hons)</strong>. I love building things
+              for the web and turning ideas into reality with code.
+            </p>
+            <p>
+              Outside of coding, I enjoy <em>competitive games, basketball and martial arts</em>. I am a proud member
+              of the Google Developer Student Club at UTP.
+            </p>
+
+            <!-- An unordered list — remember from the HTML section! -->
+            <ul class="about-facts">
+              <li>📍 Based in Perak, Malaysia</li>
+              <li>🎓 Studying at UTP</li>
+              <li>💡 Passionate about data, technology & AI</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─── SECTION 3: SKILLS ─────────────────────── -->
+    <section id="skills">
+      <div class="container">
+
+        <h2>My Skills</h2>
+        <p class="section-subtitle">Technologies I learned and am currently learning</p>
+
+        <!--
+          This is the skills container.
+          TODO in style.css: Add display:flex, justify-content, and gap to this element.
+        -->
+        <div class="skills-marquee">
+        <ul class="skills-list">
+          <li class="skill-tag">HTML5 </li>
+          <li class="skill-tag">CSS3</li>
+          <li class="skill-tag">JavaScript</li>
+          <li class="skill-tag">Flexbox</li>
+          <li class="skill-tag">Git & GitHub</li>
+          <li class="skill-tag">VS Code</li>
+          <li class="skill-tag">SQL</li>
+          <li class="skill-tag">PowerBI</li>
+          <!-- Add more skill tags here! -->
+        </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ─── SECTION 4: PROJECTS ─────────────────────── -->
+    <section id="projects">
+      <div class="container">
+
+        <h2>My Projects</h2>
+        <p class="section-subtitle">Things I've built during and after the workshop</p>
+
+        <div class="projects-grid">
+
+          <!-- Project Card 1 -->
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3 class="card-title">Personal Portfolio</h3>
+            <p class="card-desc">
+              A responsive personal portfolio website built with HTML, CSS, and JavaScript
+              during the GDSC-UTP Web Dev Workshop.
+            </p>
+            <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="card">
+            <div class="card-icon">🧮</div>
+            <h3 class="card-title">Project Two</h3>
+            <p class="card-desc">
+              Add a short description of your second project here. What did you build?
+              What problem does it solve?
+            </p>
+            <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="card">
+            <div class="card-icon">📋</div>
+            <h3 class="card-title">Project Three</h3>
+            <p class="card-desc">
+              Add a short description of your third project here. Share the link to your
+              GitHub repository!
+            </p>
+            <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="card">
+            <div class="card-icon">😢</div>
+            <h3 class="card-title">Project Four</h3>
+            <p class="card-desc">
+              A fictional project I wish I had in my GitHub repository and LinkedIn.
+            </p>
+            <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─── SECTION 5: CONTACT ─────────────────────── -->
+    <!-- ─── SECTION 5: CERTIFICATES ─────────────────── -->
+    <section id="certificates">
+      <div class="container">
+
+        <h2>Certificates</h2>
+        <p class="section-subtitle">Selected data analyst certificates I've completed</p>
+
+        <div class="certificates-grid">
+
+          <div class="certificate-card">
+            <h3 class="certificate-title">Google Data Analytics Professional Certificate</h3>
+            <p class="certificate-issuer">Issued by: Coursera · 2024</p>
+            <p class="certificate-desc">Hands-on projects covering data cleaning, analysis, and visualization using spreadsheets and SQL.</p>
+          </div>
+
+          <div class="certificate-card">
+            <h3 class="certificate-title">IBM Data Analyst Professional Certificate</h3>
+            <p class="certificate-issuer">Issued by: Coursera · 2023</p>
+            <p class="certificate-desc">Practical experience with Python, Pandas, data visualization and statistical analysis.</p>
+          </div>
+
+          <div class="certificate-card">
+            <h3 class="certificate-title">Data Visualization with Power BI</h3>
+            <p class="certificate-issuer">Issued by: edX · 2022</p>
+            <p class="certificate-desc">Building interactive dashboards and storytelling with Power BI for business insights.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+
+        <h2>Get In Touch</h2>
+        <p class="section-subtitle">Have a question or want to collaborate? Send me a message!</p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+
+          <!-- Name field -->
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="e.g. Ahmad Zulaikha"
+              required
+            />
+          </div>
+
+          <!-- Email field -->
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <!--
+              TODO (5): Change the type attribute from "text" to "email".
+              This tells the browser to validate that the input looks like an email address.
+              Hint: type="________"
+            -->
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="e.g. you@utp.edu.my"
+              required
+            />
+          </div>
+
+          <!-- Message field -->
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message 📨</button>
+
+        </form>
+
+        <!-- Social links -->
+        <div class="social-links">
+          <a href="mailto:nizam.yazid27@gmail.com">📧 Email</a>
+          <a href="https://github.com/PolarPot" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a href="https://www.linkedin.com/in/ahmad-nizamuddin-bin-mohd-yazid-5b679720a/" target="_blank" rel="noopener">💼 LinkedIn</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer>
+    <p>
+      Made with ❤️ by <strong>Nizamuddin</strong> · GDSC-UTP Web Dev Workshop 2026
+    </p>
+    <p class="footer-sub">
+      Built with HTML · CSS · JavaScript
+    </p>
+  </footer>
+
+
+  <!-- TODO (6): Link your JavaScript file here, just before the closing </body> tag.
+       Replace the blank src below with the correct filename.
+       <script src="__________.js"></script>
+  -->
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,635 @@
+/* ════════════════════════════════════════════════════════════
+   GDSC-UTP Workshop — Personal Portfolio Stylesheet
+   style.css
+   ════════════════════════════════════════════════════════════ */
+
+
+/* ─── 1. GOOGLE FONT IMPORT ─────────────────────────────────
+   We import 'Inter' for clean, modern typography.
+   This is linked before our own styles are applied.
+───────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+
+/* ─── 2. CSS VARIABLES (:root) ───────────────────────────────
+   CSS Variables let us define colours once and reuse them
+   everywhere. Changing one value updates the whole site!
+───────────────────────────────────────────────────────────── */
+:root {
+  /* TODO (1): Change '--primary-color' to your favourite hex colour.
+     Example: --primary-color: #EA4335;   (Google Red)
+              --primary-color: #34A853;   (Google Green)
+  */
+  --primary-color:    #14ba91;      /* Google Blue — change me! */
+  --secondary-color:  #f3bb15;      /* Google Yellow             */
+  --accent-color:     #34A853;      /* Google Green              */
+
+  --bg-color:         #e1faee;      /* Light background          */
+  --surface-color:    #FFFFFF;      /* Cards and panels          */
+  --text-color:       #1A1A2E;      /* Main body text            */
+  --text-muted:       #60607A;      /* Secondary / caption text  */
+  --border-color:     #E0E4F0;      /* Dividers and borders      */
+
+  --font-family:      'Inter', sans-serif;
+  --border-radius:    12px;
+  --transition:       0.3s ease;
+  --shadow:           0 4px 20px rgba(64, 115, 190, 0.12);
+}
+
+/* Dark Mode Overrides — these kick in when JavaScript
+   adds the "dark-mode" class to the <body> element.    */
+body.dark-mode {
+  --bg-color:       #00302d;
+  --surface-color:  #062730;
+  --text-color:     #E8EAFF;
+  --text-muted:     #d7dbea;
+  --border-color:   #30341c;
+  --shadow:         0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ─── 3. CSS RESET & BASE STYLES ────────────────────────────
+   box-sizing: border-box means padding/border are INCLUDED
+   in an element's width — avoids unexpected overflow.
+───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;   /* The box model — covered in the slides! */
+  margin:  0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+}
+
+body {
+  font-family:      var(--font-family);
+  background-color: var(--bg-color);
+  color:            var(--text-color);
+  line-height:      1.7;
+  transition:       background-color var(--transition),
+                    color var(--transition);
+}
+
+img {
+  max-width: 100%;
+  display:   block;
+}
+
+a {
+  color:           var(--primary-color);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;  /* Remove default bullet points */
+}
+
+
+/* ─── 4. REUSABLE UTILITIES ──────────────────────────────── */
+
+/* .container centres content and limits its max width */
+.container {
+  max-width: 1000px;
+  margin:    0 auto;
+  padding:   0 24px;
+}
+
+/* Section shared spacing */
+section {
+  padding: 80px 0;
+}
+
+/* Section headings */
+section h2 {
+  font-size:   2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.section-subtitle {
+  color:         var(--text-muted);
+  margin-bottom: 40px;
+  font-size:     1rem;
+}
+
+/* Highlighted / coloured text span */
+.highlight {
+  color: var(--primary-color);
+}
+
+
+/* ─── 5. BUTTONS ─────────────────────────────────────────── */
+.btn {
+  display:         inline-block;
+  padding:         12px 28px;
+  border-radius:   var(--border-radius);
+  font-weight:     600;
+  font-size:       0.95rem;
+  cursor:          pointer;
+  border:          none;
+  transition:      transform var(--transition),
+                   box-shadow var(--transition);
+}
+
+.btn:hover {
+  transform:  translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color:            #FFFFFF;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color:            var(--primary-color);
+  border:           2px solid var(--primary-color);
+}
+
+
+/* ─── 6. NAVBAR ──────────────────────────────────────────── */
+header {
+  position:   sticky;
+  top:        0;
+  z-index:    100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition);
+}
+
+body.dark-mode header {
+  background: rgba(10, 10, 30, 0.85);
+}
+
+.navbar {
+  display:         flex;             /* Flexbox — we covered this in CSS! */
+  align-items:     center;
+  justify-content: space-between;
+  max-width:       1000px;
+  margin:          0 auto;
+  padding:         16px 24px;
+}
+
+.nav-logo {
+  font-size:   1.2rem;
+  font-weight: 700;
+  color:       var(--primary-color);
+}
+
+.nav-links {
+  display: flex;                     /* Flex row for nav items */
+  gap:     28px;
+}
+
+.nav-links a {
+  color:       var(--text-muted);
+  font-weight: 500;
+  transition:  color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Dark Mode Toggle Button */
+#dark-toggle {
+  background:    none;
+  border:        2px solid var(--border-color);
+  border-radius: 50px;
+  padding:       6px 14px;
+  cursor:        pointer;
+  font-size:     1rem;
+  color:         var(--text-color);
+  transition:    border-color var(--transition);
+}
+
+#dark-toggle:hover {
+  border-color: var(--primary-color);
+}
+
+
+/* ─── 7. HERO SECTION ────────────────────────────────────── */
+#hero {
+  min-height:      90vh;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  text-align:      center;
+  background:      linear-gradient(135deg, var(--bg-color) 60%, #E8EFFF 100%);
+  position: relative; /* ensure absolutely-positioned canvas is relative to hero */
+}
+
+body.dark-mode #hero {
+  background: linear-gradient(135deg, var(--bg-color) 60%, #0D1233 100%);
+}
+
+.hero-content {
+  max-width: 680px;
+  padding:   0 24px;
+  position: relative;
+  z-index: 1; /* ensure content sits above the canvas */
+}
+
+/* Neural pathway canvas (subtle background visual) */
+/* Animated SVG neural background */
+.neural-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.30; /* subtle, visible on light backgrounds */
+  mix-blend-mode: normal; /* keep normal blending in light mode */
+}
+
+
+
+.neural-svg .lane path {
+  stroke: var(--primary-color);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: 0.56; /* stronger for light backgrounds */
+  stroke-dasharray: 300;
+  stroke-dashoffset: 0;
+  filter: url(#glow);
+  transition: stroke 300ms linear;
+}
+
+/* Dark mode uses accent color and a screen blend for glow */
+body.dark-mode .neural-svg {
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+body.dark-mode .neural-svg .lane path {
+  stroke: var(--accent-color);
+  stroke-opacity: 0.64;
+}
+
+/* moving dash animation to create flow along each path */
+.neural-svg .lane1 path { animation: dashA 6s linear infinite; }
+.neural-svg .lane2 path { animation: dashB 7.5s linear infinite reverse; }
+.neural-svg .lane3 path { animation: dashC 9s linear infinite; }
+.neural-svg .lane4 path { animation: dashD 11s linear infinite reverse; }
+
+@keyframes dashA { to { stroke-dashoffset: -600 } }
+@keyframes dashB { to { stroke-dashoffset: 600 } }
+@keyframes dashC { to { stroke-dashoffset: -400 } }
+@keyframes dashD { to { stroke-dashoffset: 400 } }
+
+/* Slight movement on each lane, different durations and directions */
+.neural-svg .lane1 { animation: flowA 12s ease-in-out infinite alternate; }
+.neural-svg .lane2 { animation: flowB 18s ease-in-out infinite alternate; }
+.neural-svg .lane3 { animation: flowC 14s ease-in-out infinite alternate; }
+.neural-svg .lane4 { animation: flowD 20s ease-in-out infinite alternate; }
+
+@keyframes flowA { from { transform: translateX(-3%) translateY(0); } to { transform: translateX(3%) translateY(-6px); } }
+@keyframes flowB { from { transform: translateX(2%) translateY(0); } to { transform: translateX(-2%) translateY(8px); } }
+@keyframes flowC { from { transform: translateX(-4%) translateY(0); } to { transform: translateX(4%) translateY(-10px); } }
+@keyframes flowD { from { transform: translateX(1%) translateY(0); } to { transform: translateX(-1%) translateY(6px); } }
+
+/* Add a gentle glow using pseudo elements is not possible on <svg>, so add subtle overlay with mix-blend */
+/* no global blend; handled per-theme above */
+
+#hero h1 {
+  font-size:     3rem;
+  font-weight:   700;
+  margin-bottom: 16px;
+  line-height:   1.2;
+}
+
+.hero-subtitle {
+  font-size:     1.2rem;
+  color:         var(--text-muted);
+  margin-bottom: 36px;
+}
+
+/* Space the two buttons apart using Flexbox */
+.hero-content .btn {
+  margin: 0 8px;
+}
+
+
+/* ─── 8. ABOUT SECTION ───────────────────────────────────── */
+#about {
+  background-color: var(--surface-color);
+}
+
+.about-wrapper {
+  display:     flex;
+  align-items: flex-start;
+  gap:         48px;
+}
+
+.profile-pic {
+  width:         180px;
+  height:        180px;
+  object-fit:    cover;
+  border-radius: 50%;
+  border:        4px solid var(--primary-color);
+  flex-shrink:   0;   /* Don't let the image shrink */
+}
+
+.about-text p {
+  margin-bottom:  16px;
+  color:          var(--text-muted);
+}
+
+.about-facts {
+  margin-top:  16px;
+}
+
+.about-facts li {
+  padding:       6px 0;
+  color:         var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+}
+
+
+/* ─── 9. SKILLS SECTION ──────────────────────────────────── */
+#skills {
+  background-color: var(--bg-color);
+}
+
+.skills-list {
+  /*
+    TODO (2): Make the skills display in a flexible row.
+
+    Add these three properties here:
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+    Also add "flex-wrap: wrap;" so they wrap on small screens.
+  */
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap; /* keep items in a single row for marquee */
+  align-items: center;
+  padding: 8px 0;
+  /* Make the row behave as a continuous strip we can animate */
+  white-space: nowrap;
+  /* animation: controlled by keyframes below */
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+/* Container hides the overflow so the list scrolls continuously */
+.skills-marquee {
+  overflow: hidden;
+}
+
+/* Pause animation when hovering the whole marquee */
+.skills-marquee:hover .skills-list {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.skill-tag {
+  background-color: var(--surface-color);
+  color:            var(--primary-color);
+  border:           2px solid var(--primary-color);
+  border-radius:    50px;
+  padding:          10px 24px;
+  font-weight:      600;
+  font-size:        0.9rem;
+  transition:       background-color var(--transition),
+                    color var(--transition);
+}
+
+.skill-tag:hover {
+  background-color: var(--primary-color);
+  color:            #FFFFFF;
+}
+
+
+/* ─── 10. PROJECTS SECTION ───────────────────────────────── */
+#projects {
+  background-color: var(--surface-color);
+}
+
+.projects-grid {
+  display:               grid;   /* Flexbox grid for cards */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:                   24px;
+  justify-content:       center;
+}
+
+/* ─── CERTIFICATES SECTION ───────────────────────────────── */
+#certificates {
+  background-color: var(--surface-color);
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+.certificate-card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.certificate-title {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+.certificate-issuer {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.certificate-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Each project card */
+.card {
+  background-color: var(--bg-color);
+  border:           1px solid var(--border-color);
+  border-radius:    var(--border-radius);
+  padding:          32px 24px;
+  flex:             1 1 260px;   /* Grow, shrink, base width */
+  max-width:        300px;
+  text-align:       center;
+  transition:       transform var(--transition),
+                    box-shadow var(--transition);
+}
+
+.card:hover {
+  /*
+    TODO (3): Add the 'floating' animation effect on hover.
+
+    Add this property:
+      transform: translateY(-5px);
+
+    Hint: This moves the card 5 pixels UPWARD when hovered.
+    The 'transition' above makes it animate smoothly.
+  */
+
+  /* YOUR CODE HERE */
+
+  box-shadow: var(--shadow);
+}
+
+.card-icon {
+  font-size:     2.5rem;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size:     1.2rem;
+  font-weight:   700;
+  margin-bottom: 12px;
+  color:         var(--text-color);
+}
+
+.card-desc {
+  color:         var(--text-muted);
+  font-size:     0.9rem;
+  margin-bottom: 20px;
+}
+
+
+/* ─── 11. CONTACT SECTION ────────────────────────────────── */
+#contact {
+  background-color: var(--bg-color);
+}
+
+.contact-form {
+  max-width:    580px;
+  margin:       0 auto 40px;
+  display:      flex;
+  flex-direction: column;
+  gap:          20px;
+}
+
+.form-group {
+  display:        flex;
+  flex-direction: column;
+  gap:            6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size:   0.9rem;
+  color:       var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  padding:          12px 16px;
+  border:           2px solid var(--border-color);
+  border-radius:    var(--border-radius);
+  font-family:      var(--font-family);
+  font-size:        1rem;
+  color:            var(--text-color);
+  background-color: var(--surface-color);
+  transition:       border-color var(--transition);
+  resize:           vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline:      none;
+  border-color: var(--primary-color);
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+}
+
+/* Social links row */
+.social-links {
+  display:         flex;
+  justify-content: center;
+  gap:             24px;
+  margin-top:      20px;
+}
+
+.social-links a {
+  color:       var(--text-muted);
+  font-weight: 600;
+  transition:  color var(--transition);
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+}
+
+
+/* ─── 12. FOOTER ─────────────────────────────────────────── */
+footer {
+  text-align:       center;
+  padding:          40px 24px;
+  background-color: var(--surface-color);
+  border-top:       1px solid var(--border-color);
+  color:            var(--text-muted);
+  font-size:        0.9rem;
+}
+
+.footer-sub {
+  margin-top: 6px;
+  font-size:  0.8rem;
+}
+
+
+/* ─── 13. RESPONSIVE DESIGN (Media Queries) ──────────────── */
+/*
+  Mobile-first approach:
+  The base styles above work on mobile.
+  This media query adds overrides for LARGER screens (tablets & up).
+*/
+
+/* Stack about section on small screens */
+@media (max-width: 768px) {
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  .about-wrapper {
+    flex-direction: column;
+    align-items:    center;
+    text-align:     center;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap:       12px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+}
